@@ -5,6 +5,8 @@
     
     // In Blogs werden Einträge immer in umgekehrter Reihenfolge angezeigt
     $eintraege = hole_eintraege(true);
+    $eintraege2 = hole_eintraege2();
+    var_dump($eintraege2);
 ?>
 <!DOCTYPE html>
 <html>

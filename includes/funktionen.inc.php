@@ -11,6 +11,14 @@ function hole_eintraege($umgedreht = false) {
     return $eintraege;
 }
 
+//pfeil ist wie der punkt in java
+function hole_eintraege2(){
+    $db = getDBconnection();
+    $query = 'SELECT * FROM entry';
+    $result = $db->query($query);
+    return $result->fetchAll();
+}
+
 function ist_eingeloggt() {
     $erg = false;
     if (isset($_SESSION['eingeloggt'])) {
@@ -35,6 +43,11 @@ function ist_loeschberechtigt($autor){
         }
     }
     return false;
+}
+
+function getDBconnection(){
+    $db = new PDO('mysql:host=localhost;dbname=weblog','root');
+    return $db;
 }
 
 ?>
