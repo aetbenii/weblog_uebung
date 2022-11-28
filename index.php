@@ -33,7 +33,7 @@
 
 
             --> 
-            <?php foreach ($eintraege as $key => $e): // erweiterte foreach
+            <?php foreach ($eintraege as $e): // erweiterte foreach
                 //echo implode(" ", $benutzer_daten[$e['autor']]);
                 
                 ?>
@@ -54,7 +54,7 @@
                         
                         //$autor = $eintraege[$e['autor']];
                         if(ist_loeschberechtigt($e['nickname'])){ ?>
-                             <a href="loeschen.php?nickname=<?=$e['nickname']?>">Löschen</a>
+                             <a href="loeschen.php?index=<?=$e['id']?>">Löschen</a>
                         <?php } ?>
                         <!-- -->
 	                </span>

@@ -8,7 +8,7 @@ function hole_eintraege($umgedreht = false){
     $order = "";
     if($umgedreht){$order = "ORDER BY timestamp DESC";}
     $db = getDBconnection();
-    $query = 'SELECT title, text, timestamp, nickname, name, surname 
+    $query = 'SELECT entry.id, title, text, timestamp, nickname, name, surname 
             FROM entry
             JOIN user ON user.id = entry.user_id ' .$order;
     $result = $db->query($query);

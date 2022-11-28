@@ -1,1 +1,1 @@
-a:3:{i:0;a:4:{s:5:"titel";N;s:11:"erstellt_am";N;s:5:"autor";N;s:6:"inhalt";N;}i:1;a:4:{s:5:"titel";N;s:11:"erstellt_am";N;s:5:"autor";N;s:6:"inhalt";N;}i:2;a:4:{s:5:"titel";N;s:11:"erstellt_am";N;s:5:"autor";N;s:6:"inhalt";N;}}
+a:0:{}
