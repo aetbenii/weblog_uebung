@@ -1,18 +1,11 @@
 <?php
-    require_once 'includes/konfiguration.php';
+    //require_once 'includes/konfiguration.php';
     require_once 'includes/funktionen.inc.php';
     session_start();
     
+    
     // Prüfe alle Benutzer, ob einer mit den übergebenen Daten übereinstimmt
-    foreach ($benutzer_daten as $benutzername => $daten) {
-    	if (
-			($benutzername === trim($_POST['benutzername'])) &&
-    	    ($daten['passwort'] === trim($_POST['passwort']))
-		) {
-    	   	// Wenn ja, logge den Benutzer ein
-			logge_ein($benutzername);
-    	}
-    }
+    logge_ein($_POST['benutzername'], $_POST['passwort']);
     
     /*
      * Leite zu index.php um. Der Besucher wird entweder das Login-Formular
@@ -20,4 +13,5 @@
      * erfolgreich war. 
      */
     header('Location: index.php');
+    
 ?>

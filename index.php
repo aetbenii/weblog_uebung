@@ -4,9 +4,9 @@
     session_start();
     
     // In Blogs werden Einträge immer in umgekehrter Reihenfolge angezeigt
+    
     $eintraege = hole_eintraege(true);
-    $eintraege2 = hole_eintraege2();
-    var_dump($eintraege2);
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,28 +33,28 @@
 
 
             --> 
-            <?php foreach ($eintraege as $e): // erweiterte foreach
+            <?php foreach ($eintraege as $key => $e): // erweiterte foreach
                 //echo implode(" ", $benutzer_daten[$e['autor']]);
                 
                 ?>
               
                 
-                <h1><?php echo htmlspecialchars($e['titel']); ?></h1>
-	            <?php echo nl2br(htmlspecialchars($e['inhalt'])); ?>
+                <h1><?php echo htmlspecialchars($e['title']); ?></h1>
+	            <?php echo nl2br(htmlspecialchars($e['text'])); ?>
 	            
 	            <p class="eintrag_unten">
 	                <span>
-	                    <?php $benutzer = $benutzer_daten[$e['autor']]; ?>
-	                    geschrieben von
-	                    <?php echo $benutzer['vorname']; ?>
-	                    <?php echo $benutzer['nachname']; ?>
-	                    am <?php echo  date('d.m.Y', $e['erstellt_am']); ?>
-	                    um <?php echo date('G:i', $e['erstellt_am']); ?>
+                        geschrieben von
+	                    <?php echo $e['name']; ?>
+	                    <?php echo $e['surname']; ?>
+	                    <?php echo $e['nickname']; ?>
+	                    am <?php echo  date('d.m.Y',strtotime($e['timestamp'])); ?>
+	                    um <?php echo date('G:i', strtotime($e['timestamp'])); ?>
                         <?php 
                         
                         //$autor = $eintraege[$e['autor']];
-                        if(ist_loeschberechtigt($e['autor'])){ ?>
-                             <a href="loeschen.php?autor=<?=$e['autor']?>&t=<?=$e['erstellt_am']?>">Löschen</a>
+                        if(ist_loeschberechtigt($e['nickname'])){ ?>
+                             <a href="loeschen.php?nickname=<?=$e['nickname']?>">Löschen</a>
                         <?php } ?>
                         <!-- -->
 	                </span>

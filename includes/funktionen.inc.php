@@ -1,22 +1,28 @@
 <?php
 
-function hole_eintraege($umgedreht = false) {
-    $eintraege = array();
-    if (file_exists(PFAD_EINTRAEGE)) {
-        $eintraege = unserialize(file_get_contents(PFAD_EINTRAEGE));
-        if ($umgedreht === true) {
-            $eintraege = array_reverse($eintraege);
-        }
-    }
-    return $eintraege;
-}
-
 //pfeil ist wie der punkt in java
-function hole_eintraege2(){
+
+use LDAP\Result;
+
+function hole_eintraege($umgedreht = false){
+    $order = "";
+    if($umgedreht){$order = "ORDER BY timestamp DESC";}
     $db = getDBconnection();
-    $query = 'SELECT * FROM entry';
+    $query = 'SELECT title, text, timestamp, nickname, name, surname 
+            FROM entry
+            JOIN user ON user.id = entry.user_id ' .$order;
     $result = $db->query($query);
     return $result->fetchAll();
+}
+
+function logge_ein($n, $p){
+    $db = getDBconnection();
+    $query = "SELECT id, name FROM `user` 
+    where nickname = '$n' AND
+    password = '$p'";
+    $result = $db->query($query);
+    $result = $result->fetch();
+    if($result) $_SESSION['eingeloggt'] = $n;
 }
 
 function ist_eingeloggt() {
@@ -28,25 +34,24 @@ function ist_eingeloggt() {
     return $erg;
 }
 
-function logge_ein($benutzername) {
-    $_SESSION['eingeloggt'] = $benutzername;
-}
+
 
 function logge_aus() {
     unset($_SESSION['eingeloggt']);
 }
 
-function ist_loeschberechtigt($autor){
+function ist_loeschberechtigt($nickname){
     if(ist_eingeloggt()){
-        if($autor == $_SESSION['eingeloggt']){
+        if($nickname == $_SESSION['eingeloggt']){
             return true;
         }
     }
     return false;
 }
 
+
 function getDBconnection(){
-    $db = new PDO('mysql:host=localhost;dbname=weblog','root');
+    $db = new PDO('mysql:host=localhost;dbname=webuebung','root');
     return $db;
 }
 
