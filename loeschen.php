@@ -1,9 +1,9 @@
 <?php
 require_once 'includes/konfiguration.php';
 require_once 'includes/funktionen.inc.php';
-$eintraege= hole_eintraege();
+//$eintraege= hole_eintraege();
 
-$neuauflage= array();
+/* $neuauflage= array();
 
 foreach ($eintraege as $e) {
    
@@ -19,9 +19,8 @@ foreach ($eintraege as $e) {
      
     }
     
+} */
+    loesche_Beitrag($_GET['index']);
 
-
-}
-
-file_put_contents(PFAD_EINTRAEGE, serialize($neuauflage));
+//file_put_contents(PFAD_EINTRAEGE, serialize($neuauflage));
 header("Location:index.php");

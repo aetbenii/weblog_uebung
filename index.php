@@ -6,7 +6,6 @@
     // In Blogs werden Einträge immer in umgekehrter Reihenfolge angezeigt
     
     $eintraege = hole_eintraege(true);
-    
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,8 +45,8 @@
 	                <span>
                         geschrieben von
 	                    <?php echo $e['name']; ?>
-	                    <?php echo $e['surname']; ?>
-	                    <?php echo $e['nickname']; ?>
+	                    <?php echo $e['surname']; 
+	                      //echo $e['nickname']; ?> 
 	                    am <?php echo  date('d.m.Y',strtotime($e['timestamp'])); ?>
 	                    um <?php echo date('G:i', strtotime($e['timestamp'])); ?>
                         <?php 
@@ -55,6 +54,7 @@
                         //$autor = $eintraege[$e['autor']];
                         if(ist_loeschberechtigt($e['nickname'])){ ?>
                              <a href="loeschen.php?index=<?=$e['id']?>">Löschen</a>
+                             <a href="bearbeite_beitrag.php?index=<?=$e['id']?>">Bearbeiten</a>
                         <?php } ?>
                         <!-- -->
 	                </span>

@@ -25,6 +25,31 @@ function logge_ein($n, $p){
     if($result) $_SESSION['eingeloggt'] = $n;
 }
 
+function erstelle_Beitrag($title, $text, $timestamp, $user_id){
+    $db = getDBconnection();
+    $result = $db->query("SELECT id FROM user WHERE nickname like '".$user_id."'");
+    $user_id = $result->fetch();
+    $query = "INSERT INTO entry (title, text, timestamp, user_id)
+            VALUES ('".$title."', '".$text."', '".$timestamp."', '".$user_id[0]."')";
+    $result = $db->query($query);
+    $result = $result->fetch();
+}
+
+function loesche_Beitrag($id){
+    $db = getDBconnection();
+    $query = "DELETE FROM entry WHERE id = ".$id;
+    $result = $db->query($query);
+    $result = $result->fetch();
+}
+
+function hole_Beitrag($id){
+    $db = getDBconnection();
+    $query = "SELECT title, text, timestamp FROM entry WHERE id like ".$id;
+    $result = $db->query($query);
+    $result = $result->fetch();
+    return $result;
+}
+
 function ist_eingeloggt() {
     $erg = false;
     if (isset($_SESSION['eingeloggt'])) {
@@ -33,7 +58,6 @@ function ist_eingeloggt() {
     }
     return $erg;
 }
-
 
 
 function logge_aus() {
@@ -48,7 +72,6 @@ function ist_loeschberechtigt($nickname){
     }
     return false;
 }
-
 
 function getDBconnection(){
     $db = new PDO('mysql:host=localhost;dbname=webuebung','root');

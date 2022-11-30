@@ -18,13 +18,15 @@
         'titel'       => trim($_POST['titel']),
         'inhalt'      => trim($_POST['inhalt']),
         'autor'       => $_SESSION['eingeloggt'],
-        'erstellt_am' => time()
+        'erstellt_am' => date("Y-m-d G:i:s", time())
     );
     
+    erstelle_Beitrag($eintrag['titel'], $eintrag['inhalt'], $eintrag['erstellt_am'], $eintrag['autor'] );
+
     // hole die alten Einträge, hänge den neuen an und speichere
-    $eintraege   = hole_eintraege();
+    /* $eintraege   = hole_eintraege();
     $eintraege[] = $eintrag;
-    file_put_contents(PFAD_EINTRAEGE, serialize($eintraege));
+    file_put_contents(PFAD_EINTRAEGE, serialize($eintraege)); */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
