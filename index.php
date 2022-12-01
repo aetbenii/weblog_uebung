@@ -54,7 +54,7 @@
                         //$autor = $eintraege[$e['autor']];
                         if(ist_loeschberechtigt($e['nickname'])){ ?>
                              <a href="loeschen.php?index=<?=$e['id']?>">Löschen</a>
-                             <a href="bearbeite_beitrag.php?index=<?=$e['id']?>">Bearbeiten</a>
+                             <a href="bearbeite_beitrag.php?index=<?=$e['id']?>&value=<?='false'?>">Bearbeiten</a>
                         <?php } ?>
                         <!-- -->
 	                </span>

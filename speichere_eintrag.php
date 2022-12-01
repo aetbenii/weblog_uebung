@@ -21,6 +21,7 @@
         'erstellt_am' => date("Y-m-d G:i:s", time())
     );
     
+    // am besten das noch in eine if einklammern
     erstelle_Beitrag($eintrag['titel'], $eintrag['inhalt'], $eintrag['erstellt_am'], $eintrag['autor'] );
 
     // hole die alten Einträge, hänge den neuen an und speichere

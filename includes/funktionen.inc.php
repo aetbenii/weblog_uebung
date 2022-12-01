@@ -50,6 +50,13 @@ function hole_Beitrag($id){
     return $result;
 }
 
+function update_Beitrag($id, $title, $text, $timestamp){
+    $db = getDBconnection();
+    $query = "UPDATE entry SET title='".$title."', text='".$text."', timestamp='".$timestamp."' WHERE id=".$id;
+    $result = $db->query($query);
+    $result = $result->fetch();
+}
+
 function ist_eingeloggt() {
     $erg = false;
     if (isset($_SESSION['eingeloggt'])) {
@@ -74,7 +81,7 @@ function ist_loeschberechtigt($nickname){
 }
 
 function getDBconnection(){
-    $db = new PDO('mysql:host=localhost;dbname=webuebung','root');
+    $db = new PDO('mysql:host=localhost;dbname=webblog','root');
     return $db;
 }
 
