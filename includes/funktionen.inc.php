@@ -39,7 +39,6 @@ function loesche_Beitrag($id){
     $db = getDBconnection();
     $query = "DELETE FROM entry WHERE id = ".$id;
     $result = $db->query($query);
-    $result = $result->fetch();
 }
 
 function hole_Beitrag($id){
@@ -81,7 +80,7 @@ function ist_loeschberechtigt($nickname){
 }
 
 function getDBconnection(){
-    $db = new PDO('mysql:host=localhost;dbname=webblog','root');
+    $db = new PDO('mysql:host=localhost;dbname=webuebung','root');
     return $db;
 }
 
