@@ -61,12 +61,12 @@ h1{
     margin: 0.4rem;
     padding: 0.4rem;
     width: 12em;
-    
+    background-color: rgb(163, 163, 163);
     border-radius: 8px;
 }
 
 .input_container input::placeholder{
-    color: rgb(58, 58, 58);
+    color: rgb(32, 32, 32);
 }
 
 .input_container input:focus{
@@ -76,14 +76,13 @@ h1{
 #btnregister{
     width: 13em;
     padding: 0.4rem;
-    background-color: white;
-    
+    background: linear-gradient(60deg,lightblue 0%, rgb(123, 123, 255) 60%);
+    font-weight: 700;
     border-radius: 8px;
     transition: 800ms ease-in-out;
 }
 
 #btnregister:hover{
-    background-color: blueviolet;
-    color: white;
-    border: 1.5px solid rgb(53, 35, 50);
+   color: white;
+    
 }
